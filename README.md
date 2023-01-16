@@ -2,7 +2,7 @@
 Very small project for my gf to track when the Resident Evil 4 Remake Collector's Edition is avaiable in Poland :) 
 
 This script checks the number of search results for a specific keyword (resident evil 4) on a website (https://www.euro.com.pl/) and sends an email notification if the number of results increases.
-
+The script will run indefinitely, checking the search results every 30 seconds.
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -22,7 +22,7 @@ These instructions will get you a copy of the project up and running on your loc
 Note that you'll also need to allow "less secure apps" to connect to your account, you can follow these steps:
 Go to the "Less secure app access" section in My Account.
 Turn on access for less secure apps.
-\The script will run indefinitely, checking the search results every 30 seconds.
+
 
 ## Built With
 
@@ -32,3 +32,5 @@ Turn on access for less secure apps.
 * [smtplib](https://docs.python.org/3/library/smtplib.html) - Library used to send emails
 
 ## Authors
+* **magda2307** - [magda2307](https://github.com/magda2307)
+
