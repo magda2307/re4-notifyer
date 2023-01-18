@@ -28,8 +28,11 @@ smtp_server = "smtp.gmail.com"
 sender_email = "youremail@gmail.com"  # Enter your address
 receiver_email = "youremail@gmail.com"  # Enter receiver address
 
-# Function to check the search results for a specific keyword
+# Variable to store the previous number of search results
+previous_num_results = 0
+
 def check_search_results():
+    global previous_num_results
     try:
         # URL of the search page
         url = "https://www.euro.com.pl/search.bhtml?keyword=Resident%20Evil%204"
@@ -42,16 +45,22 @@ def check_search_results():
         # Extracting the number of results from the text
         num_results = int(search_results.split(" ")[-2])
 
-             # Sending the email
-        message = f"""\
-        Subject: Search Results Update
-        Number of search results for Resident Evil 4 has increased. The number of results is {num_results}."""
-        with smtplib.SMTP_SSL(smtp_server, port, context=ssl.create_default_context()) as server:
-            server.login(sender_email, creds)
-            server.sendmail(sender_email, receiver_email, message)
+        if num_results > previous_num_results:
+            # Sending the email
+            message = f"""\
+            Subject: Search Results Update
+            Number of search results for Resident Evil 4 has increased. The number of results is {num_results}."""
+            with smtplib.SMTP_SSL(smtp_server, port, context=ssl.create_default_context()) as server:
+                server.login(sender_email, creds)
+                server.sendmail(sender_email, receiver_email, message)
+            # Updating the previous_num_results variable
+            previous_num_results = num_results
+        else:
+            print(f'No changes noticed. Timestamp: {datetime.now()}')
     except Exception as e:
         # In case the website structure changes or there is a pop-up on the page, the script throws an error
         print(f'An error occurred: {e}')
+
         
 # Running the script indefinitely
 while True:
