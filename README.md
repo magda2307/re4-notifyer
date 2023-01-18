@@ -1,36 +1,23 @@
-# re4-notifyer
-Very small project for my gf to track when the Resident Evil 4 Remake Collector's Edition is avaiable in Poland :) 
+# Scraping and Email Notification Script
 
-This script checks the number of search results for a specific keyword (resident evil 4) on a website (https://www.euro.com.pl/) and sends an email notification if the number of results increases.
-The script will run indefinitely, checking the search results every 30 seconds.
-## Getting Started
+This script is used to scrape search results for a specific keyword (Resident Evil 4) from a website (https://www.euro.com.pl/)  and send an email notification when the number of search results has increased using OAuth 2.0. This is a simple project for my girlfriend for her to be able to buy colectioner's ediiton of RE4 :)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+## Prerequisites
+- Python 3
+- `requests`, `beautifulsoup4`, `google-auth`, `google-api-python-client`, `datetime` libraries
+- Google account with access to the Google API
+- OAuth 2.0 credentials for your Google account
 
-### Prerequisites
-
-- Python 3.x
-- requests library
-- BeautifulSoup library
-- smtplib library
-
-### Installing
-
+## Setup
 1. Clone the repository.
-2. Install the required libraries
-3. Update the script with your email and password, and the keyword you want to monitor
-Note that you'll also need to allow "less secure apps" to connect to your account, you can follow these steps:
-Go to the "Less secure app access" section in My Account.
-Turn on access for less secure apps.
+2. Install the necessary libraries.
+3. Replace `youremail@gmail.com` in the script with your email address.
+4. Replace `YOUR_CLIENT_ID`, `YOUR_PROJECT_ID`, `YOUR_CLIENT_SECRET` in the script with the actual values from your project's credentials.
+5. Modify the script to scrape the desired website and search results for the desired keyword.
+6. Run the script.
 
+This script is set up to run indefinitely, checking for changes in the search results every 30 seconds. If the number of search results increases, an email will be sent to the provided email address.
+Please note that the script uses OAuth 2.0 authentication to access the user's Gmail account and send emails.
 
-## Built With
-
-* [Python](https://www.python.org/) - The programming language used
-* [requests](https://requests.readthedocs.io/en/master/) - Library used to make HTTP requests
-* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Library used to parse HTML
-* [smtplib](https://docs.python.org/3/library/smtplib.html) - Library used to send emails
-
-## Authors
-* **magda2307** - [magda2307](https://github.com/magda2307)
-
+## Error handling
+In case the website structure changes or there is a pop-up on the page, the script continues working.
